@@ -1,27 +1,28 @@
 package org.bcamp.crud.factcampesino.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Supply")
 public class Supply {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private Double sell_price;
+    private Double buy_price;
 
     @ManyToOne
-    @JoinColumn(name = "id_classification")
-    private Classification classification;
+    @JoinColumn(name = "id_category")
+    private Category category;
 
     public Supply(){}
-    public Supply(int id, String name, Double sell_price, Classification classification) {
+    public Supply(int id, String name, Double buy_price, Category category) {
         super();
         this.id = id;
         this.name = name;
-        this.sell_price = sell_price;
-        this.classification = classification;
+        this.buy_price = buy_price;
+        this.category = category;
     }
 
     public int getId() {
@@ -32,12 +33,13 @@ public class Supply {
         return name;
     }
 
-    public Double getSellPrice(){
-        return sell_price;
+    @JsonProperty("buy_price")
+    public Double getBuyPrice(){
+        return buy_price;
     }
 
-    public Classification getClassification(){
-        return classification;
+    public Category getCategory(){
+        return category;
     }
 
     public void setId(int id) {
@@ -48,11 +50,11 @@ public class Supply {
         this.name = name;
     }
 
-    public void setSellPrice(Double sell_price) {
-        this.sell_price = sell_price;
+    public void setBuyPrice(Double buy_price) {
+        this.buy_price = buy_price;
     }
 
-    public void setClassification(Classification classification) {
-        this.classification = classification;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 }

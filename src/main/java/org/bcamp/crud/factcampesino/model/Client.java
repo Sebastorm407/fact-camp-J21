@@ -15,7 +15,7 @@ public class Client {
     private String last_name;
     private String birthdate;
     private String address;
-    private int phone_number;
+    private String phone_number;
 
     @ManyToOne
     @JoinColumn(name = "id_gender")
@@ -29,7 +29,7 @@ public class Client {
 
     }
 
-    public Client(int id, int number_id, String name, String last_name, String birthdate, String address, int phone_number, Gender id_gender, City id_city) {
+    public Client(int id, int number_id, String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
         super();
         this.id = id;
         this.number_id = number_id;
@@ -68,7 +68,7 @@ public class Client {
         return address;
     }
 
-    public int getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
@@ -104,7 +104,7 @@ public class Client {
         this.address = address;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 

@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Product_Supply")
+@Table(name = "Product_supply")
 public class Product_supply {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,19 +18,19 @@ public class Product_supply {
     private Product id_product;
 
     @ManyToOne
-    @JoinColumn(name = "id_sup_supplier")
-    private Sup_supplier id_sup_supplier;
+    @JoinColumn(name = "id_supply")
+    private Supply id_supply;
 
     public Product_supply() {
     }
 
-    public Product_supply(int id, Date make_date, int amount, Product product, Sup_supplier sup_supplier) {
+    public Product_supply(int id, Date make_date, int amount, Product product, Supply supply) {
         super();
         this.id = id;
         this.make_date = make_date;
         this.amount = amount;
         this.id_product = product;
-        this.id_sup_supplier = sup_supplier;
+        this.id_supply = supply;
     }
 
     // GETTERS AND SETTERS
@@ -66,11 +66,11 @@ public class Product_supply {
         this.id_product = product;
     }
 
-    public Sup_supplier getId_sup_supplier() {
-        return id_sup_supplier;
+    public Supply getId_sup_supplier() {
+        return id_supply;
     }
 
-    public void setId_sup_supplier(Sup_supplier id_sup_supplier) {
-        this.id_sup_supplier = id_sup_supplier;
+    public void setId_sup_supplier(Supply id_supply) {
+        this.id_supply = id_supply;
     }
 }

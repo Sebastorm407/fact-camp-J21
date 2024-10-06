@@ -5,8 +5,8 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Statement_client")
-public class Statement_client {
+@Table(name = "Bill")
+public class Bill {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -14,26 +14,21 @@ public class Statement_client {
     private int amount;
 
     @ManyToOne
-    @JoinColumn(name = "id_product_supply")
-    private Product_supply product_supply;
-
-    @ManyToOne
     @JoinColumn(name = "id_client")
-    private Client client;
+    private Client id_client;
 
     @ManyToOne
     @JoinColumn(name = "id_employee")
-    private Employee employee;
+    private Employee id_employee;
 
-    public Statement_client() {}
-    public Statement_client(int id, Date make_date, int amount, Product_supply product_supply, Client client, Employee employee) {
+    public Bill() {}
+    public Bill(int id, Date make_date, int amount, Client client, Employee employee) {
         super();
         this.id = id;
         this.make_date = make_date;
         this.amount = amount;
-        this.product_supply = product_supply;
-        this.client = client;
-        this.employee = employee;
+        this.id_client = client;
+        this.id_employee = employee;
     }
 
     public int getId() {
@@ -48,16 +43,12 @@ public class Statement_client {
         return amount;
     }
 
-    public Product_supply getProduct_supply() {
-        return product_supply;
-    }
-
     public Client getClient() {
-        return client;
+        return id_client;
     }
 
     public Employee getEmployee() {
-        return employee;
+        return id_employee;
     }
 
     public void setId(int id) {
@@ -72,15 +63,11 @@ public class Statement_client {
         this.amount = amount;
     }
 
-    public void setProduct_supply(Product_supply product_supply) {
-        this.product_supply = product_supply;
+    public void setClient(Client id_client) {
+        this.id_client = id_client;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
+    public void setEmployee(Employee id_employee) {
+        this.id_employee = id_employee;
     }
 }

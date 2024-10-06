@@ -55,8 +55,8 @@ public class EmployeeService implements EmployeeRepository {
     }
 
     @Override
-    public Employee getById(Long aLong) {
-        return null;
+    public Employee getById(Long id) {
+        return employeeRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -110,8 +110,8 @@ public class EmployeeService implements EmployeeRepository {
     }
 
     @Override
-    public Optional<Employee> findById(Long aLong) {
-        return Optional.empty();
+    public Optional<Employee> findById(Long id) {
+        return null;
     }
 
     @Override
@@ -125,8 +125,8 @@ public class EmployeeService implements EmployeeRepository {
     }
 
     @Override
-    public List<Employee> findAllById(Iterable<Long> longs) {
-        return List.of();
+    public List<Employee> findAllById(Iterable<Long> id) {
+        return null;
     }
 
     @Override

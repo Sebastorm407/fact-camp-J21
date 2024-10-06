@@ -1,5 +1,6 @@
 package org.bcamp.crud.factcampesino.service;
 
+import org.bcamp.crud.factcampesino.model.Product;
 import org.bcamp.crud.factcampesino.model.Supply;
 import org.bcamp.crud.factcampesino.repository.SupplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -101,8 +102,8 @@ public class SupplyService implements SupplyRepository {
     }
 
     @Override
-    public <S extends Supply> S save(S entity) {
-        return null;
+    public Supply save(Supply supply) {
+        return supplyRepository.save(supply);
     }
 
     @Override

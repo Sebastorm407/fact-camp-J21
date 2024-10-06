@@ -1,8 +1,8 @@
 package org.bcamp.crud.factcampesino.service;
 
 
-import org.bcamp.crud.factcampesino.model.Statement_client;
-import org.bcamp.crud.factcampesino.repository.StatementRepository;
+import org.bcamp.crud.factcampesino.model.Bill;
+import org.bcamp.crud.factcampesino.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -16,9 +16,9 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Service
-public class StatementService implements StatementRepository {
+public class BillService implements BillRepository {
     @Autowired
-    private StatementRepository statementRepository;
+    private BillRepository billRepository;
 
     @Override
     public void flush() {
@@ -26,17 +26,17 @@ public class StatementService implements StatementRepository {
     }
 
     @Override
-    public <S extends Statement_client> S saveAndFlush(S entity) {
+    public <S extends Bill> S saveAndFlush(S entity) {
         return null;
     }
 
     @Override
-    public <S extends Statement_client> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public <S extends Bill> List<S> saveAllAndFlush(Iterable<S> entities) {
         return List.of();
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<Statement_client> entities) {
+    public void deleteAllInBatch(Iterable<Bill> entities) {
 
     }
 
@@ -51,67 +51,67 @@ public class StatementService implements StatementRepository {
     }
 
     @Override
-    public Statement_client getOne(Long aLong) {
+    public Bill getOne(Long aLong) {
         return null;
     }
 
     @Override
-    public Statement_client getById(Long aLong) {
+    public Bill getById(Long aLong) {
         return null;
     }
 
     @Override
-    public Statement_client getReferenceById(Long aLong) {
+    public Bill getReferenceById(Long aLong) {
         return null;
     }
 
     @Override
-    public <S extends Statement_client> Optional<S> findOne(Example<S> example) {
+    public <S extends Bill> Optional<S> findOne(Example<S> example) {
         return Optional.empty();
     }
 
     @Override
-    public <S extends Statement_client> List<S> findAll(Example<S> example) {
+    public <S extends Bill> List<S> findAll(Example<S> example) {
         return List.of();
     }
 
     @Override
-    public <S extends Statement_client> List<S> findAll(Example<S> example, Sort sort) {
+    public <S extends Bill> List<S> findAll(Example<S> example, Sort sort) {
         return List.of();
     }
 
     @Override
-    public <S extends Statement_client> Page<S> findAll(Example<S> example, Pageable pageable) {
+    public <S extends Bill> Page<S> findAll(Example<S> example, Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends Statement_client> long count(Example<S> example) {
+    public <S extends Bill> long count(Example<S> example) {
         return 0;
     }
 
     @Override
-    public <S extends Statement_client> boolean exists(Example<S> example) {
+    public <S extends Bill> boolean exists(Example<S> example) {
         return false;
     }
 
     @Override
-    public <S extends Statement_client, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+    public <S extends Bill, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
 
     @Override
-    public <S extends Statement_client> S save(S entity) {
+    public <S extends Bill> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends Statement_client> List<S> saveAll(Iterable<S> entities) {
+    public <S extends Bill> List<S> saveAll(Iterable<S> entities) {
         return List.of();
     }
 
     @Override
-    public Optional<Statement_client> findById(Long aLong) {
+    public Optional<Bill> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -121,12 +121,12 @@ public class StatementService implements StatementRepository {
     }
 
     @Override
-    public List<Statement_client> findAll() {
-        return statementRepository.findAll();
+    public List<Bill> findAll() {
+        return billRepository.findAll();
     }
 
     @Override
-    public List<Statement_client> findAllById(Iterable<Long> longs) {
+    public List<Bill> findAllById(Iterable<Long> longs) {
         return List.of();
     }
 
@@ -141,7 +141,7 @@ public class StatementService implements StatementRepository {
     }
 
     @Override
-    public void delete(Statement_client entity) {
+    public void delete(Bill entity) {
 
     }
 
@@ -151,7 +151,7 @@ public class StatementService implements StatementRepository {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends Statement_client> entities) {
+    public void deleteAll(Iterable<? extends Bill> entities) {
 
     }
 
@@ -161,12 +161,12 @@ public class StatementService implements StatementRepository {
     }
 
     @Override
-    public List<Statement_client> findAll(Sort sort) {
+    public List<Bill> findAll(Sort sort) {
         return List.of();
     }
 
     @Override
-    public Page<Statement_client> findAll(Pageable pageable) {
+    public Page<Bill> findAll(Pageable pageable) {
         return null;
     }
 }

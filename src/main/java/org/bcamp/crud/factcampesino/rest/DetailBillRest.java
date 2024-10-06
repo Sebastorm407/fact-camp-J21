@@ -1,7 +1,7 @@
 package org.bcamp.crud.factcampesino.rest;
 
-import org.bcamp.crud.factcampesino.model.Statement_client;
-import org.bcamp.crud.factcampesino.service.StatementService;
+import org.bcamp.crud.factcampesino.model.DetailBill;
+import org.bcamp.crud.factcampesino.service.DetailBillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/statement")
+@RequestMapping("/detailBill")
 @CrossOrigin("*")
-public class StatementRest {
+public class DetailBillRest {
     @Autowired
-    private StatementService statementService;
+    private DetailBillService detailBillService;
 
     @GetMapping
-    private ResponseEntity<List<Statement_client>> getAllState(){
-        return ResponseEntity.ok(statementService.findAll());
+    private ResponseEntity<List<DetailBill>> getAllState(){
+        return ResponseEntity.ok(detailBillService.findAll());
     }
 }

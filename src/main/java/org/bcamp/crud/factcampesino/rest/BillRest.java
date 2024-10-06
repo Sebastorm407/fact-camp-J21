@@ -1,7 +1,7 @@
 package org.bcamp.crud.factcampesino.rest;
 
-import org.bcamp.crud.factcampesino.model.Classification;
-import org.bcamp.crud.factcampesino.service.ClassifService;
+import org.bcamp.crud.factcampesino.model.Bill;
+import org.bcamp.crud.factcampesino.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/classif")
+@RequestMapping("/bill")
 @CrossOrigin("*")
-public class ClassifRest {
+public class BillRest {
     @Autowired
-    private ClassifService classifService;
+    private BillService billService;
 
     @GetMapping
-    private ResponseEntity<List<Classification>> findAll(){
-        return ResponseEntity.ok(classifService.findAll());
+    private ResponseEntity<List<Bill>> getAllState(){
+        return ResponseEntity.ok(billService.findAll());
     }
 }

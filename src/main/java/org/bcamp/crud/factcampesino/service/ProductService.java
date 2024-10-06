@@ -19,6 +19,7 @@ public class ProductService implements ProductRepository {
     @Autowired
     private ProductRepository productRepository;
 
+
     @Override
     public void flush() {
 
@@ -58,6 +59,7 @@ public class ProductService implements ProductRepository {
     public Product getById(Long aLong) {
         return null;
     }
+
 
     @Override
     public Product getReferenceById(Long aLong) {
@@ -99,9 +101,8 @@ public class ProductService implements ProductRepository {
         return null;
     }
 
-    @Override
-    public <S extends Product> S save(S entity) {
-        return null;
+    public Product save(Product product) {
+        return productRepository.save(product);
     }
 
     @Override
@@ -110,8 +111,8 @@ public class ProductService implements ProductRepository {
     }
 
     @Override
-    public Optional<Product> findById(Long aLong) {
-        return Optional.empty();
+    public Optional<Product> findById(Long id) {
+        return productRepository.findById(id);
     }
 
     @Override

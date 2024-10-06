@@ -1,6 +1,7 @@
 package org.bcamp.crud.factcampesino.service;
 
 import org.bcamp.crud.factcampesino.model.Category;
+import org.bcamp.crud.factcampesino.model.Product;
 import org.bcamp.crud.factcampesino.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -100,8 +101,8 @@ public class CategoryService implements CategoryRepository {
     }
 
     @Override
-    public <S extends Category> S save(S entity) {
-        return null;
+    public Category save(Category category) {
+        return categoryRepository.save(category);
     }
 
     @Override
@@ -110,8 +111,8 @@ public class CategoryService implements CategoryRepository {
     }
 
     @Override
-    public Optional<Category> findById(Long aLong) {
-        return Optional.empty();
+    public Optional<Category> findById(Long id) {
+        return categoryRepository.findById(id);
     }
 
     @Override

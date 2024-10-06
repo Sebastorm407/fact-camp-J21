@@ -1,7 +1,7 @@
 package org.bcamp.crud.factcampesino.service;
 
-import org.bcamp.crud.factcampesino.model.Classification;
-import org.bcamp.crud.factcampesino.repository.ClassifRepository;
+import org.bcamp.crud.factcampesino.model.DetailBill;
+import org.bcamp.crud.factcampesino.repository.DetailBillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -15,9 +15,9 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Service
-public class ClassifService implements ClassifRepository {
+public class DetailBillService implements DetailBillRepository {
     @Autowired
-    private ClassifRepository classifRepository;
+    private DetailBillRepository detailBillRepository;
 
     @Override
     public void flush() {
@@ -25,17 +25,17 @@ public class ClassifService implements ClassifRepository {
     }
 
     @Override
-    public <S extends Classification> S saveAndFlush(S entity) {
+    public <S extends DetailBill> S saveAndFlush(S entity) {
         return null;
     }
 
     @Override
-    public <S extends Classification> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public <S extends DetailBill> List<S> saveAllAndFlush(Iterable<S> entities) {
         return List.of();
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<Classification> entities) {
+    public void deleteAllInBatch(Iterable<DetailBill> entities) {
 
     }
 
@@ -50,67 +50,67 @@ public class ClassifService implements ClassifRepository {
     }
 
     @Override
-    public Classification getOne(Long aLong) {
+    public DetailBill getOne(Long aLong) {
         return null;
     }
 
     @Override
-    public Classification getById(Long aLong) {
+    public DetailBill getById(Long aLong) {
         return null;
     }
 
     @Override
-    public Classification getReferenceById(Long aLong) {
+    public DetailBill getReferenceById(Long aLong) {
         return null;
     }
 
     @Override
-    public <S extends Classification> Optional<S> findOne(Example<S> example) {
+    public <S extends DetailBill> Optional<S> findOne(Example<S> example) {
         return Optional.empty();
     }
 
     @Override
-    public <S extends Classification> List<S> findAll(Example<S> example) {
+    public <S extends DetailBill> List<S> findAll(Example<S> example) {
         return List.of();
     }
 
     @Override
-    public <S extends Classification> List<S> findAll(Example<S> example, Sort sort) {
+    public <S extends DetailBill> List<S> findAll(Example<S> example, Sort sort) {
         return List.of();
     }
 
     @Override
-    public <S extends Classification> Page<S> findAll(Example<S> example, Pageable pageable) {
+    public <S extends DetailBill> Page<S> findAll(Example<S> example, Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends Classification> long count(Example<S> example) {
+    public <S extends DetailBill> long count(Example<S> example) {
         return 0;
     }
 
     @Override
-    public <S extends Classification> boolean exists(Example<S> example) {
+    public <S extends DetailBill> boolean exists(Example<S> example) {
         return false;
     }
 
     @Override
-    public <S extends Classification, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+    public <S extends DetailBill, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
 
     @Override
-    public <S extends Classification> S save(S entity) {
+    public <S extends DetailBill> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends Classification> List<S> saveAll(Iterable<S> entities) {
+    public <S extends DetailBill> List<S> saveAll(Iterable<S> entities) {
         return List.of();
     }
 
     @Override
-    public Optional<Classification> findById(Long aLong) {
+    public Optional<DetailBill> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -120,12 +120,12 @@ public class ClassifService implements ClassifRepository {
     }
 
     @Override
-    public List<Classification> findAll() {
-        return classifRepository.findAll();
+    public List<DetailBill> findAll() {
+        return detailBillRepository.findAll();
     }
 
     @Override
-    public List<Classification> findAllById(Iterable<Long> longs) {
+    public List<DetailBill> findAllById(Iterable<Long> longs) {
         return List.of();
     }
 
@@ -140,7 +140,7 @@ public class ClassifService implements ClassifRepository {
     }
 
     @Override
-    public void delete(Classification entity) {
+    public void delete(DetailBill entity) {
 
     }
 
@@ -150,7 +150,7 @@ public class ClassifService implements ClassifRepository {
     }
 
     @Override
-    public void deleteAll(Iterable<? extends Classification> entities) {
+    public void deleteAll(Iterable<? extends DetailBill> entities) {
 
     }
 
@@ -160,12 +160,12 @@ public class ClassifService implements ClassifRepository {
     }
 
     @Override
-    public List<Classification> findAll(Sort sort) {
+    public List<DetailBill> findAll(Sort sort) {
         return List.of();
     }
 
     @Override
-    public Page<Classification> findAll(Pageable pageable) {
+    public Page<DetailBill> findAll(Pageable pageable) {
         return null;
     }
 }
