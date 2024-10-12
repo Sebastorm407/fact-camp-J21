@@ -2,6 +2,7 @@ package org.bcamp.crud.factcampesino.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -9,20 +10,19 @@ import java.util.Set;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
-
 
 
     public Category(){}
 
-    public Category(int id, String name){
+    public Category(Long id, String name){
         super();
         this.id = id;
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -30,7 +30,7 @@ public class Category {
         return name;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

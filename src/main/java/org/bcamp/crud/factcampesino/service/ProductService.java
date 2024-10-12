@@ -1,5 +1,6 @@
 package org.bcamp.crud.factcampesino.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.bcamp.crud.factcampesino.model.Product;
 import org.bcamp.crud.factcampesino.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,158 +16,41 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Service
-public class ProductService implements ProductRepository {
+public class ProductService{
     @Autowired
     private ProductRepository productRepository;
-
-
-    @Override
-    public void flush() {
-
-    }
-
-    @Override
-    public <S extends Product> S saveAndFlush(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends Product> List<S> saveAllAndFlush(Iterable<S> entities) {
-        return List.of();
-    }
-
-    @Override
-    public void deleteAllInBatch(Iterable<Product> entities) {
-
-    }
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public Product getOne(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public Product getById(Long aLong) {
-        return null;
-    }
-
-
-    @Override
-    public Product getReferenceById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public <S extends Product> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-
-    @Override
-    public <S extends Product> List<S> findAll(Example<S> example) {
-        return List.of();
-    }
-
-    @Override
-    public <S extends Product> List<S> findAll(Example<S> example, Sort sort) {
-        return List.of();
-    }
-
-    @Override
-    public <S extends Product> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends Product> long count(Example<S> example) {
-        return 0;
-    }
-
-    @Override
-    public <S extends Product> boolean exists(Example<S> example) {
-        return false;
-    }
-
-    @Override
-    public <S extends Product, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        return null;
-    }
 
     public Product save(Product product) {
         return productRepository.save(product);
     }
 
-    @Override
-    public <S extends Product> List<S> saveAll(Iterable<S> entities) {
-        return List.of();
-    }
-
-    @Override
     public Optional<Product> findById(Long id) {
         return productRepository.findById(id);
     }
 
-    @Override
     public boolean existsById(Long aLong) {
         return false;
     }
 
-    @Override
     public List<Product> findAll() {
         return productRepository.findAll();
     }
 
-    @Override
-    public List<Product> findAllById(Iterable<Long> longs) {
-        return List.of();
+    public Optional<Product> update(Long id, Product product) {
+        return productRepository.findById(id).map(existingProduct -> {
+            existingProduct.setName(product.getName());
+            existingProduct.setSell_price(product.getSell_price());
+            return productRepository.save(existingProduct);
+        });
     }
 
-    @Override
-    public long count() {
-        return 0;
+
+    public void deleteById(Long id) {
+        if(productRepository.existsById(id)){
+            productRepository.deleteById(id);
+        } else{
+            throw new EntityNotFoundException("Product with id " + id + " not found");
+        }
     }
 
-    @Override
-    public void deleteById(Long aLong) {
-
-    }
-
-    @Override
-    public void delete(Product entity) {
-
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends Product> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public List<Product> findAll(Sort sort) {
-        return List.of();
-    }
-
-    @Override
-    public Page<Product> findAll(Pageable pageable) {
-        return null;
-    }
 }

@@ -22,6 +22,14 @@ dependencies {
     implementation 'mysql:mysql-connector-java:8.0.27'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    //implementation 'org.springframework.security:spring-security-core'
+    //implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    //implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'io.jsonwebtoken:jjwt:0.9.1' // Para manejo de JWT
+    //implementation 'org.springframework.security:spring-security-config'
+    //implementation 'org.springframework.security:spring-security-web'
     runtimeOnly 'org.postgresql:postgresql'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'

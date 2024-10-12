@@ -41,8 +41,33 @@ public class ProductRest {
         }
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product) {
+        // Verifica si los IDs son válidos
+        if (id == null || product.getId() == null || !id.equals(product.getId())) {
+            return ResponseEntity.badRequest().build(); // Error 400
+        }
+
+        // Verifica si el producto existe
+        Optional<Product> existingProduct = productService.findById(id);
+        if (!existingProduct.isPresent()) {
+            return ResponseEntity.notFound().build(); // Error 404 si el producto no existe
+        }
+
+        // Guarda el producto actualizado
+        Product savedProduct = productService.save(product);
+        return ResponseEntity.ok(savedProduct); // Devuelve el producto actualizado
+    }
+
+
     @GetMapping(path = "/{id}")
     public Optional<Product> findById(@PathVariable Long id) {
         return this.productService.findById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
+        productService.deleteById(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT); // Responder con No Content cuando la eliminación es exitosa
     }
 }

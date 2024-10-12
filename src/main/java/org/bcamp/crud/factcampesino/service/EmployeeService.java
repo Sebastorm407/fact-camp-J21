@@ -111,12 +111,16 @@ public class EmployeeService implements EmployeeRepository {
 
     @Override
     public Optional<Employee> findById(Long id) {
-        return null;
+        return employeeRepository.findById(id);
     }
 
     @Override
     public boolean existsById(Long aLong) {
         return false;
+    }
+
+    public Optional<Employee> findBynumberId(Long number_id) {
+        return employeeRepository.findById(number_id);
     }
 
     @Override

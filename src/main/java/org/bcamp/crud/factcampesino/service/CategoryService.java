@@ -1,8 +1,11 @@
 package org.bcamp.crud.factcampesino.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.bcamp.crud.factcampesino.model.Category;
 import org.bcamp.crud.factcampesino.model.Product;
+import org.bcamp.crud.factcampesino.model.Supply;
 import org.bcamp.crud.factcampesino.repository.CategoryRepository;
+import org.bcamp.crud.factcampesino.repository.SupplyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -19,6 +22,9 @@ import java.util.function.Function;
 public class CategoryService implements CategoryRepository {
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private SupplyRepository supplyRepository;
 
     @Override
     public void flush() {
@@ -136,13 +142,24 @@ public class CategoryService implements CategoryRepository {
     }
 
     @Override
-    public void deleteById(Long aLong) {
-
+    public void deleteById(Long id) {
+        if(categoryRepository.existsById(id)){
+            categoryRepository.deleteById(id);
+        } else{
+            throw new EntityNotFoundException("Product with id " + id + " not found");
+        }
     }
 
     @Override
     public void delete(Category entity) {
 
+    }
+
+    public Optional<Category> updateCategory(Long id, Category category) {
+        return categoryRepository.findById(id).map(existingProduct -> {
+            existingProduct.setName(category.getName());
+            return categoryRepository.save(existingProduct);
+        });
     }
 
     @Override
@@ -169,4 +186,5 @@ public class CategoryService implements CategoryRepository {
     public Page<Category> findAll(Pageable pageable) {
         return null;
     }
+
 }

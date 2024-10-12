@@ -6,9 +6,9 @@ import jakarta.persistence.*;
 @Table(name = "Employee")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int number_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long numberId;
     private String password_id;
     private String name;
     private String last_name;
@@ -28,10 +28,10 @@ public class Employee {
 
     }
 
-    public Employee(int id, int number_id, String password_id,String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
+    public Employee(Long id, Long number_id, String password_id,String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
         super();
         this.id = id;
-        this.number_id = number_id;
+        this.numberId = number_id;
         this.password_id = password_id;
         this.name = name;
         this.last_name = last_name;
@@ -44,12 +44,12 @@ public class Employee {
 
     //GETTERS AND SETTERS
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public int getNumber_id() {
-        return number_id;
+    public Long getNumber_id() {
+        return numberId;
     }
 
     public String getPassword_id() {
@@ -84,12 +84,12 @@ public class Employee {
         return id_city;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public void setNumber_id(int number_id) {
-        this.number_id = number_id;
+    public void setNumber_id(Long numberId) {
+        this.numberId = numberId;
     }
 
     public void setPassword_id(String password_id) {
