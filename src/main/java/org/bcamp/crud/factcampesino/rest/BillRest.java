@@ -30,7 +30,7 @@ public class BillRest {
     private BillRepository billRepository;
 
     @GetMapping
-    private ResponseEntity<List<Bill>> getAllState(){
+    private ResponseEntity<List<Bill>> getAll(){
         return ResponseEntity.ok(billService.findAll());
     }
 

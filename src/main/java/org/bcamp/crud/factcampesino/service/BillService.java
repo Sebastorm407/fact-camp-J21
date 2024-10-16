@@ -17,162 +17,19 @@ import java.util.Optional;
 import java.util.function.Function;
 
 @Service
-public class BillService implements BillRepository {
+public class BillService{
     @Autowired
     private BillRepository billRepository;
 
-    @Override
-    public void flush() {
 
-    }
+
 
     public Bill saves(Bill bill) {
         return billRepository.save(bill);
     }
 
-    @Override
-    public <S extends Bill> S saveAndFlush(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends Bill> List<S> saveAllAndFlush(Iterable<S> entities) {
-        return List.of();
-    }
-
-    @Override
-    public void deleteAllInBatch(Iterable<Bill> entities) {
-
-    }
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public Bill getOne(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public Bill getById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public Bill getReferenceById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public <S extends Bill> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-
-    @Override
-    public <S extends Bill> List<S> findAll(Example<S> example) {
-        return List.of();
-    }
-
-    @Override
-    public <S extends Bill> List<S> findAll(Example<S> example, Sort sort) {
-        return List.of();
-    }
-
-    @Override
-    public <S extends Bill> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends Bill> long count(Example<S> example) {
-        return 0;
-    }
-
-    @Override
-    public <S extends Bill> boolean exists(Example<S> example) {
-        return false;
-    }
-
-    @Override
-    public <S extends Bill, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        return null;
-    }
-
-    @Override
-    public <S extends Bill> S save(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends Bill> List<S> saveAll(Iterable<S> entities) {
-        return List.of();
-    }
-
-    @Override
-    public Optional<Bill> findById(Long aLong) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Long aLong) {
-        return false;
-    }
-
-    @Override
     public List<Bill> findAll() {
         return billRepository.findAll();
-    }
-
-    @Override
-    public List<Bill> findAllById(Iterable<Long> longs) {
-        return List.of();
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Long aLong) {
-
-    }
-
-    @Override
-    public void delete(Bill entity) {
-
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends Bill> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public List<Bill> findAll(Sort sort) {
-        return List.of();
-    }
-
-    @Override
-    public Page<Bill> findAll(Pageable pageable) {
-        return null;
     }
 
 }
