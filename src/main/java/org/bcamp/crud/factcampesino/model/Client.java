@@ -8,8 +8,8 @@ import java.util.Set;
 @Table(name = "Client")
 public class Client {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private int number_id;
     private String name;
     private String last_name;
@@ -29,7 +29,7 @@ public class Client {
 
     }
 
-    public Client(int id, int number_id, String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
+    public Client(Long id, int number_id, String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
         super();
         this.id = id;
         this.number_id = number_id;
@@ -44,7 +44,7 @@ public class Client {
 
     //GETTERS AND SETTERS
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -80,7 +80,7 @@ public class Client {
         return id_city;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

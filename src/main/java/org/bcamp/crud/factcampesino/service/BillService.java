@@ -2,6 +2,7 @@ package org.bcamp.crud.factcampesino.service;
 
 
 import org.bcamp.crud.factcampesino.model.Bill;
+import org.bcamp.crud.factcampesino.model.Product;
 import org.bcamp.crud.factcampesino.repository.BillRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -23,6 +24,10 @@ public class BillService implements BillRepository {
     @Override
     public void flush() {
 
+    }
+
+    public Bill saves(Bill bill) {
+        return billRepository.save(bill);
     }
 
     @Override
@@ -169,4 +174,5 @@ public class BillService implements BillRepository {
     public Page<Bill> findAll(Pageable pageable) {
         return null;
     }
+
 }

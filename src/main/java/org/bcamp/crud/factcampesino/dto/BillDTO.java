@@ -1,30 +1,20 @@
-package org.bcamp.crud.factcampesino.model;
+package org.bcamp.crud.factcampesino.dto;
 
-import jakarta.persistence.*;
-import java.time.LocalDateTime;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "Bill")
-public class Bill {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class BillDTO {
+
     private Long id;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime make_date;
+    private Long id_client;
+    private Long id_employee;
 
-    @ManyToOne
-    @JoinColumn(name = "id_client")
-    private Client id_client;
-
-    @ManyToOne
-    @JoinColumn(name = "id_employee")
-    private Employee id_employee;
-
-    public Bill() {}
-    public Bill(Long id, LocalDateTime make_date, Client id_client, Employee id_employee) {
+    public BillDTO() {}
+    public BillDTO(Long id, LocalDateTime make_date, Long id_client, Long id_employee) {
         super();
         this.id = id;
         this.make_date = make_date;
@@ -35,32 +25,25 @@ public class Bill {
     public Long getId() {
         return id;
     }
-
-    public LocalDateTime getMake_date() {
-        return make_date;
-    }
-
-    public Client getClient() {
-        return id_client;
-    }
-
-    public Employee getEmployee() {
-        return id_employee;
-    }
-
     public void setId(Long id) {
         this.id = id;
     }
-
+    public LocalDateTime getMake_date() {
+        return make_date;
+    }
     public void setMake_date(LocalDateTime make_date) {
         this.make_date = make_date;
     }
-
-    public void setClient(Client id_client) {
+    public Long getId_client() {
+        return id_client;
+    }
+    public void setId_client(Long id_client) {
         this.id_client = id_client;
     }
-
-    public void setEmployee(Employee id_employee) {
+    public Long getId_employee() {
+        return id_employee;
+    }
+    public void setId_employee(Long id_employee) {
         this.id_employee = id_employee;
     }
 

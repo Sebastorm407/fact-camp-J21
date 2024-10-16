@@ -28,10 +28,10 @@ public class Employee {
 
     }
 
-    public Employee(Long id, Long number_id, String password_id,String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
+    public Employee(Long id, Long numberId, String password_id,String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
         super();
         this.id = id;
-        this.numberId = number_id;
+        this.numberId = numberId;
         this.password_id = password_id;
         this.name = name;
         this.last_name = last_name;
@@ -48,7 +48,7 @@ public class Employee {
         return id;
     }
 
-    public Long getNumber_id() {
+    public Long getNumberId() {
         return numberId;
     }
 
@@ -88,7 +88,7 @@ public class Employee {
         this.id = id;
     }
 
-    public void setNumber_id(Long numberId) {
+    public void setNumberId(Long numberId) {
         this.numberId = numberId;
     }
 
