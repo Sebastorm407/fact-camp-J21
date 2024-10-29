@@ -3,10 +3,10 @@ package org.bcamp.crud.factcampesino.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "DetailBill")
+@Table(name = "Detail_bill")
 public class DetailBill {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int amount;
     private double unit_price;
@@ -66,6 +66,17 @@ public class DetailBill {
 
     public void setId_bill(Bill id_bill) {
         this.id_bill = id_bill;
+    }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "id=" + id +
+                ", amount='" + amount + '\'' +
+                ", unit_price=" + unit_price +
+                ", id_product=" + id_product +
+                ", id_bill=" + id_bill +
+                '}';
     }
 }
 

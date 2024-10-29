@@ -53,4 +53,12 @@ public class Product {
     public void setSell_price(Double sell_price) {
         this.sell_price = sell_price;
     }
+
+    @Override
+    public String toString(){
+        return "Product " +
+                "id=" + id + ", " +
+                "name=" + name +
+                "sell_price=" + sell_price;
+    }
 }

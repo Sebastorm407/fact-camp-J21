@@ -32,4 +32,12 @@ public class BillService{
         return billRepository.findAll();
     }
 
+    public Optional<Bill> findById(Long id) {
+        return billRepository.findById(id);
+    }
+
+    public Bill findLastCreatedBill() {
+        return billRepository.findTopByOrderByIdDesc(); // Suponiendo que tienes un método en el repositorio
+    }
+
 }

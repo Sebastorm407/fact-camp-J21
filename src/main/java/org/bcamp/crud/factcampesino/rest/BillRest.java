@@ -3,6 +3,7 @@ package org.bcamp.crud.factcampesino.rest;
 import org.bcamp.crud.factcampesino.dto.BillDTO;
 import org.bcamp.crud.factcampesino.model.*;
 import org.bcamp.crud.factcampesino.repository.BillRepository;
+import org.bcamp.crud.factcampesino.repository.DetailBillRepository;
 import org.bcamp.crud.factcampesino.service.BillService;
 import org.bcamp.crud.factcampesino.service.ClientService;
 import org.bcamp.crud.factcampesino.service.EmployeeService;
@@ -11,7 +12,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/bill")
@@ -28,6 +31,9 @@ public class BillRest {
     @Qualifier("billRepository")
     @Autowired
     private BillRepository billRepository;
+
+    @Autowired
+    private DetailBillRepository detailBillRepository;
 
     @GetMapping
     private ResponseEntity<List<Bill>> getAll(){

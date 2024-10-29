@@ -1,8 +1,12 @@
 package org.bcamp.crud.factcampesino.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+import org.bcamp.crud.factcampesino.model.DetailBill;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class BillDTO {
 
@@ -12,14 +16,16 @@ public class BillDTO {
     private LocalDateTime make_date;
     private Long id_client;
     private Long id_employee;
+    private List<DetailBill> details;
 
     public BillDTO() {}
-    public BillDTO(Long id, LocalDateTime make_date, Long id_client, Long id_employee) {
+    public BillDTO(Long id, LocalDateTime make_date, Long id_client, Long id_employee, List<DetailBill> details) {
         super();
         this.id = id;
         this.make_date = make_date;
         this.id_client = id_client;
         this.id_employee = id_employee;
+        this.details = details;
     }
 
     public Long getId() {
@@ -45,6 +51,12 @@ public class BillDTO {
     }
     public void setId_employee(Long id_employee) {
         this.id_employee = id_employee;
+    }
+    public List<DetailBill> getDetails() {
+        return details;
+    }
+    public void setDetails(List<DetailBill> details) {
+        this.details = details;
     }
 
     @Override

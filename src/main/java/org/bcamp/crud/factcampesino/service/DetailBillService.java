@@ -1,171 +1,69 @@
 package org.bcamp.crud.factcampesino.service;
 
+import com.google.gson.Gson;
+import org.bcamp.crud.factcampesino.dto.DetailBillDTO;
+import org.bcamp.crud.factcampesino.model.Bill;
+import org.bcamp.crud.factcampesino.model.Category;
 import org.bcamp.crud.factcampesino.model.DetailBill;
+import org.bcamp.crud.factcampesino.model.Product;
 import org.bcamp.crud.factcampesino.repository.DetailBillRepository;
+import org.bcamp.crud.factcampesino.rest.DetailBillRest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.query.FluentQuery;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 @Service
-public class DetailBillService implements DetailBillRepository {
+public class DetailBillService {
     @Autowired
     private DetailBillRepository detailBillRepository;
 
-    @Override
-    public void flush() {
+    @Autowired
+    private ProductService productService;
 
+    @Autowired
+    private BillService billService;
+
+    public DetailBill save(DetailBill detailBill) {
+        return detailBillRepository.save(detailBill);
     }
 
-    @Override
-    public <S extends DetailBill> S saveAndFlush(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends DetailBill> List<S> saveAllAndFlush(Iterable<S> entities) {
-        return List.of();
-    }
-
-    @Override
-    public void deleteAllInBatch(Iterable<DetailBill> entities) {
-
-    }
-
-    @Override
-    public void deleteAllByIdInBatch(Iterable<Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAllInBatch() {
-
-    }
-
-    @Override
-    public DetailBill getOne(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public DetailBill getById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public DetailBill getReferenceById(Long aLong) {
-        return null;
-    }
-
-    @Override
-    public <S extends DetailBill> Optional<S> findOne(Example<S> example) {
-        return Optional.empty();
-    }
-
-    @Override
-    public <S extends DetailBill> List<S> findAll(Example<S> example) {
-        return List.of();
-    }
-
-    @Override
-    public <S extends DetailBill> List<S> findAll(Example<S> example, Sort sort) {
-        return List.of();
-    }
-
-    @Override
-    public <S extends DetailBill> Page<S> findAll(Example<S> example, Pageable pageable) {
-        return null;
-    }
-
-    @Override
-    public <S extends DetailBill> long count(Example<S> example) {
-        return 0;
-    }
-
-    @Override
-    public <S extends DetailBill> boolean exists(Example<S> example) {
-        return false;
-    }
-
-    @Override
-    public <S extends DetailBill, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
-        return null;
-    }
-
-    @Override
-    public <S extends DetailBill> S save(S entity) {
-        return null;
-    }
-
-    @Override
-    public <S extends DetailBill> List<S> saveAll(Iterable<S> entities) {
-        return List.of();
-    }
-
-    @Override
-    public Optional<DetailBill> findById(Long aLong) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Long aLong) {
-        return false;
-    }
-
-    @Override
     public List<DetailBill> findAll() {
         return detailBillRepository.findAll();
     }
 
-    @Override
-    public List<DetailBill> findAllById(Iterable<Long> longs) {
-        return List.of();
-    }
+    public DetailBill createDetailBills(DetailBillDTO detailBillDTO) {
 
-    @Override
-    public long count() {
-        return 0;
-    }
+        System.out.println("Creando detalle de factura con datos" + detailBillDTO);
+        // Busca la factura asociada y maneja la excepción si no se encuentra
+        Bill bill = billService.findById(detailBillDTO.getId_bill())
+                .orElseThrow(() -> new RuntimeException("Factura no encontrada con ID: " + detailBillDTO.getId_bill()));
 
-    @Override
-    public void deleteById(Long aLong) {
+        // Busca el producto asociado y maneja la excepción si no se encuentra
+        Product product = productService.findById(detailBillDTO.getId_product())
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado con ID: " + detailBillDTO.getId_product()));
 
-    }
+        // Crea el detalle de la factura
+        DetailBill detailBill = new DetailBill();
+        detailBill.setAmount(detailBillDTO.getAmount());
+        detailBill.setUnit_price(detailBillDTO.getUnit_price());
+        detailBill.setId_product(product);
+        detailBill.setId_bill(bill);
 
-    @Override
-    public void delete(DetailBill entity) {
+        // Guarda el detalle y devuelve la entidad creada
+        DetailBill savedDetail = detailBillRepository.save(detailBill);
+        System.out.println("Detalle de factura creado exitosamente: " + savedDetail);
 
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Long> longs) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends DetailBill> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
-
-    @Override
-    public List<DetailBill> findAll(Sort sort) {
-        return List.of();
-    }
-
-    @Override
-    public Page<DetailBill> findAll(Pageable pageable) {
-        return null;
+        return savedDetail;
     }
 }
