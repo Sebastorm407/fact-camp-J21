@@ -42,6 +42,10 @@ public class DetailBillService {
         return detailBillRepository.findAll();
     }
 
+    public Optional<DetailBill> findById(Long id) {
+        return detailBillRepository.findById(id);
+    }
+
     public DetailBill createDetailBills(DetailBillDTO detailBillDTO) {
 
         System.out.println("Creando detalle de factura con datos" + detailBillDTO);
@@ -65,5 +69,9 @@ public class DetailBillService {
         System.out.println("Detalle de factura creado exitosamente: " + savedDetail);
 
         return savedDetail;
+    }
+
+    public List<DetailBill> obtainDetailsByBillId(Long billId) {
+        return detailBillRepository.findByBillId(billId);
     }
 }

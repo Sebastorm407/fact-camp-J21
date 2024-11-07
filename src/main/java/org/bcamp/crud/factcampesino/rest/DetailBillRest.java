@@ -21,17 +21,17 @@ public class DetailBillRest {
     @Autowired
     private DetailBillService detailBillService;
 
-    @Autowired
-    private ProductService productService;
-
-    @Autowired
-    private BillService billService;
-    @Autowired
-    private Gson gson;
-
     @GetMapping
     private ResponseEntity<List<DetailBill>> getAllState(){
         return ResponseEntity.ok(detailBillService.findAll());
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<DetailBill> getDetailBillById(@PathVariable long id){
+        DetailBill detailBill = detailBillService.findById(id).orElseThrow(() ->
+        new RuntimeException("Detalle de factura no encontrado"));
+        return ResponseEntity.ok(detailBill);
+
     }
 
     @PostMapping

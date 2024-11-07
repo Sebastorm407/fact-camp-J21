@@ -26,7 +26,7 @@ public class Bill {
     private Employee id_employee;
 
     public Bill() {}
-    public Bill(Long id, LocalDateTime make_date, Client id_client, Employee id_employee, List<DetailBill> details) {
+    public Bill(Long id, LocalDateTime make_date, Client id_client, Employee id_employee) {
         super();
         this.id = id;
         this.make_date = make_date;

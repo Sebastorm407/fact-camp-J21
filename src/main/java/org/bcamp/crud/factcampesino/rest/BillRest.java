@@ -40,6 +40,12 @@ public class BillRest {
         return ResponseEntity.ok(billService.findAll());
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<BillDTO> obtainBillWithDetails(@PathVariable Long id){
+        BillDTO billDTO = billService.obtainBillWithDetails(id);
+        return ResponseEntity.ok(billDTO);
+    }
+
     @PostMapping
     private Bill createBill(@RequestBody BillDTO billDTO){
         System.out.println("Entro: " + billDTO);
