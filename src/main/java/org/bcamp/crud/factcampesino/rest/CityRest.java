@@ -22,8 +22,10 @@ public class CityRest {
         return ResponseEntity.ok(cityService.findAll());
     }
 
-    @GetMapping("{id}")
-    private ResponseEntity<List<City>> getAllDepartById(@PathVariable("id") Long idCity) {
-        return ResponseEntity.ok(cityService.findAllByDepart(idCity));
+    @GetMapping("/{id}")
+    public ResponseEntity<City> getCityById(@PathVariable Long id) {
+        City city = cityService.findById(id)
+                .orElseThrow(() -> new RuntimeException("City with ID " + id + " not found"));
+        return ResponseEntity.ok(city);
     }
 }

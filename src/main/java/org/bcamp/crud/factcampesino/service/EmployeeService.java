@@ -1,6 +1,8 @@
 package org.bcamp.crud.factcampesino.service;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.bcamp.crud.factcampesino.model.Employee;
+import org.bcamp.crud.factcampesino.model.Product;
 import org.bcamp.crud.factcampesino.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -28,13 +30,19 @@ public class EmployeeService {
         return employeeRepository.findById(id).orElse(null);
     }
 
-
-    public Optional<Employee> findBynumberId(Long numberId) {
-        return employeeRepository.findById(numberId);
+    public void deleteById(Long id) {
+        if(employeeRepository.existsById(id)){
+            employeeRepository.deleteById(id);
+        } else{
+            throw new EntityNotFoundException("Product with id " + id + " not found");
+        }
     }
-
 
     public List<Employee> findAll() {
         return employeeRepository.findAll();
+    }
+
+    public Employee save(Employee employee) {
+        return employeeRepository.save(employee);
     }
 }

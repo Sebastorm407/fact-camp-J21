@@ -21,8 +21,8 @@ public class ClientService{
     private ClientRepository clientRepository;
 
 
-    public <S extends Client> S save(S entity) {
-        return clientRepository.save(entity);
+    public Client save(Client client) {
+        return clientRepository.save(client);
     }
 
     public Client findById(Long id) {
@@ -36,13 +36,5 @@ public class ClientService{
     public void deleteById(Long aLong) {
         clientRepository.deleteById(aLong);
     }
-
-
-    public void delete(Client entity) {
-        clientRepository.delete(entity);
-    }
-
-
-
 
 }

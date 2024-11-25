@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
     private String name;
 
     @ManyToOne
@@ -16,7 +16,7 @@ public class City {
 
     public City() {}
 
-    public City(int id, String name, Department id_department) {
+    public City(Long id, String name, Department id_department) {
         super();
         this.id = id;
         this.name = name;
@@ -25,7 +25,7 @@ public class City {
 
     //GETTERS AND SETTERS
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
@@ -37,7 +37,7 @@ public class City {
         return id_department;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

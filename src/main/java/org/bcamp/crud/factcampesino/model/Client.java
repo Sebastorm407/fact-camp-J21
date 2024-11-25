@@ -10,7 +10,7 @@ public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int number_id;
+    private Long number_id;
     private String name;
     private String last_name;
     private String birthdate;
@@ -29,7 +29,7 @@ public class Client {
 
     }
 
-    public Client(Long id, int number_id, String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
+    public Client(Long id, Long number_id, String name, String last_name, String birthdate, String address, String phone_number, Gender id_gender, City id_city) {
         super();
         this.id = id;
         this.number_id = number_id;
@@ -48,7 +48,7 @@ public class Client {
         return id;
     }
 
-    public int getNumber_id() {
+    public Long getNumber_id() {
         return number_id;
     }
 
@@ -84,7 +84,7 @@ public class Client {
         this.id = id;
     }
 
-    public void setNumber_id(int number_id) {
+    public void setNumber_id(Long number_id) {
         this.number_id = number_id;
     }
 
